@@ -1,26 +1,29 @@
-alias s="git show"
-alias stat="git status"
+alias add="git add"
 alias add.="git add ."
 alias ame="git commit --amend"
-alias h="git reset --hard"
-alias br="git branch"
-alias delbr="git branch -D"
-alias sw="git checkout"
-alias reflog="git reflog"
-alias rebdev="git rebase -i develop"
-alias swdev="git checkout develop"
-function curbr {
-	echo $(git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
-}
-function brsw(){ br $1; sw $1 }
-function fbr(){ br feature/$1_$2; sw feature/$1_$2 }
-alias log2="git log2"
-alias add="git add"
-alias rebase="git rebase"
-alias rebcon="git rebase --continue"
 alias co="git commit"
-alias tag="git tag"
-alias diff="git diff HEAD"
+alias diff="git diff --cached"
+alias deltag="git tag -d"
+alias h="git reset --hard"
+alias log2="git log2"
+alias pop="git stash pop"
+alias pull="git pull"
 alias push="git push"
 alias push-f="git push -f"
 alias reset="git reset"
+alias reflog="git reflog"
+alias s="git show"
+alias stat="git status"
+alias stash="git stash"
+alias tag="git tag"
+function totag {
+  br=`curbr`
+  sw develop
+  git tag $br
+  git branch -D $br
+}
+function untag {
+  git checkout $1
+  brsw $1
+  deltag $1
+}

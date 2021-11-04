@@ -1,3 +1,8 @@
+alias als="cd ~/dotfiles/aliases"
 alias dc="docker-compose"
+alias dt="cd ~/dotfiles"
 alias ls="ls -G"
 alias hosts="sudo vi /private/etc/hosts"
+function prompt {
+  PROMPT="%F{12}%n@%F{12}%C $1%F{reset}$ "
+}

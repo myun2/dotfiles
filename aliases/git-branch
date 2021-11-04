@@ -1,0 +1,34 @@
+alias back="git reset --hard HEAD^"
+alias br_="git branch"
+function br { prompt `curbr`; git branch $1 }
+function brsw(){ br $1; sw $1 }
+alias brrm="git branch -m"
+function curbr {
+	echo $(git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
+}
+alias delbr="git branch -D"
+function delthis {
+  br=`curbr`
+  swdev
+  git branch -D $br
+}
+function fbr(){ br feature/$1_$2; sw feature/$1_$2 }
+function hbr(){ br hotfix/$1_$2; sw hotfix/$1_$2 }
+alias rebab="git rebase --abort"
+alias rebase="git rebase"
+alias rebcon="git rebase --continue"
+alias rebdev="git rebase -i develop"
+function rem { br=`curbr` }
+function rmco {
+  git fetch
+  git checkout -b $1 origin/$1
+}
+alias sw_="git checkout"
+function sw { git checkout $1; prompt $1 }
+alias swdev="sw develop"
+function ver() {
+  br `curbr`_$1
+  echo "Create branch `curbr`_$1"
+}
+alias v1="ver 1"
+alias v2="ver 2"
