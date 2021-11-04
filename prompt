@@ -1,0 +1,1 @@
+PROMPT="%F{12}%n@%m %C%F{reset}$ "
