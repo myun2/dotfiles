@@ -1,3 +1,5 @@
 alias tt="tmux"
 alias tl="tmux list-session"
 alias t="tmux attach-session -t "
+alias rns="tmux rename-session"
+alias rnw="tmux rename-window"

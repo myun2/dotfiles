@@ -6,3 +6,6 @@ alias hosts="sudo vi /private/etc/hosts"
 function prompt {
   PROMPT="%F{12}%n@%F{12}%C $1%F{reset}$ "
 }
+function repl() {
+  find * -type f | xargs sed -i '' "s/$1/$2/g"
+}

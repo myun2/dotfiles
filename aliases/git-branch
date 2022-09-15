@@ -9,7 +9,7 @@ function curbr {
 alias delbr="git branch -D"
 function delthis {
   br=`curbr`
-  swdev
+  git checkout develop
   git branch -D $br
 }
 function fbr(){ br feature/$1_$2; sw feature/$1_$2 }
@@ -32,3 +32,5 @@ function ver() {
 }
 alias v1="ver 1"
 alias v2="ver 2"
+alias ad.="git add ."
+alias am="git commit --amend"
