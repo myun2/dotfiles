@@ -1,4 +1,3 @@
-alias back="git reset --hard HEAD^"
 alias br_="git branch"
 function br { prompt `curbr`; git branch $1 }
 function brsw(){ br $1; sw $1 }
@@ -9,7 +8,7 @@ function curbr {
 alias delbr="git branch -D"
 function delthis {
   br=`curbr`
-  git checkout develop
+  swdev
   git branch -D $br
 }
 function fbr(){ br feature/$1_$2; sw feature/$1_$2 }
@@ -26,11 +25,3 @@ function rmco {
 alias sw_="git checkout"
 function sw { git checkout $1; prompt $1 }
 alias swdev="sw develop"
-function ver() {
-  br `curbr`_$1
-  echo "Create branch `curbr`_$1"
-}
-alias v1="ver 1"
-alias v2="ver 2"
-alias ad.="git add ."
-alias am="git commit --amend"

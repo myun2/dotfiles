@@ -1,5 +1,7 @@
 alias add="git add"
 alias add.="git add ."
+alias ad.="git add ."
+alias am="git commit --amend"
 alias ame="git commit --amend"
 alias co="git commit"
 alias diff="git diff --cached"
@@ -17,12 +19,9 @@ alias stat="git status"
 alias stash="git stash"
 alias tag="git tag"
 function totag {
-  br=$1
-  if [ -z $br ]; then
-    br=`curbr`
-    git checkout develop
-  fi
-  git tag $br $br
+  br=`curbr`
+  sw develop
+  git tag $br
   git branch -D $br
 }
 function untag {
