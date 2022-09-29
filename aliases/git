@@ -1,31 +1,30 @@
-alias add="git add"
-alias add.="git add ."
-alias ad.="git add ."
-alias am="git commit --amend"
-alias ame="git commit --amend"
-alias co="git commit"
 alias diff="git diff --cached"
-alias deltag="git tag -d"
+alias diff^="git diff HEAD^"
+alias diff^^="git diff HEAD^^"
 alias h="git reset --hard"
+alias prev="git reset --hard HEAD^"
 alias log2="git log2"
 alias pop="git stash pop"
+alias reset="git reset"
+alias reflog="git reflog"
+alias stat="git status"
+alias stash="git stash"
+
+alias ignore="git update-index --skip-worktree"
+alias noignore="git update-index --no-skip-worktree"
+alias unignore="git update-index --no-skip-worktree"
+
 alias pull="git pull"
 alias push="git push"
 alias push-f="git push -f"
-alias reset="git reset"
-alias reflog="git reflog"
-alias s="git show"
-alias stat="git status"
-alias stash="git stash"
-alias tag="git tag"
-function totag {
-  br=`curbr`
-  sw develop
-  git tag $br
-  git branch -D $br
+
+function rmco {
+  git fetch
+  git checkout -b $1 origin/$1
 }
-function untag {
-  git checkout $1
-  brsw $1
-  deltag $1
+alias sw_="git checkout"
+function sw { git checkout $1; prompt $1 }
+alias swdev="sw develop"
+function curbr {
+	echo $(git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
 }

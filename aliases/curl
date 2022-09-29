@@ -1,0 +1,15 @@
+export CURL_PROTOCOL=https
+export CURL_METHOD=POST
+export CURL_SELF_CERT=--insecure
+function cpath() { CURL_PATH=$1 }
+function chost() { CURL_HOST=$1 }
+function cdata() { CURL_DATA=$1 }
+function cmethod() { CURL_METHOD=$1 }
+alias cget="export CURL_METHOD=GET"
+alias cpost="export CURL_METHOD=POST"
+alias cpatch="export CURL_METHOD=PATCH"
+alias cput="export CURL_METHOD=PUT"
+alias cdelete="export CURL_METHOD=DELETE"
+alias call="
+  echo https://$CURL_HOST$CURL_PATH -X $CURL_METHOD $CURL_DATA;
+  curl https://$CURL_HOST$CURL_PATH -X $CURL_METHOD $CURL_DATA"

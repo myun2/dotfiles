@@ -1,0 +1,18 @@
+alias co="git commit"
+alias am="git commit --amend"
+alias ame="git commit --amend"
+alias emp="git commit --allow-empty"
+
+alias add="git add"
+alias add.="git add ."
+alias ad.="git add ."
+
+alias s="git show"
+alias h="git reset --hard"
+alias reset="git reset"
+alias stash="git stash"
+
+alias rebab="git rebase --abort"
+alias rebase="git rebase"
+alias rebcon="git rebase --continue"
+alias rebdev="git rebase -i develop"

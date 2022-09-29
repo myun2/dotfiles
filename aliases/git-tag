@@ -1,0 +1,17 @@
+alias tag="git tag"
+function totag {
+  br_name=$1
+  if [ -z $br_name ]; then
+    br_name=`curbr`
+    #swdev
+    git checkout develop
+  fi
+  git tag $br_name $br_name
+  git branch -D $br_name
+}
+alias deltag="git tag -d"
+function untag {
+  git checkout $1
+  brsw $1
+  deltag $1
+}

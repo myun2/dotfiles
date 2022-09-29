@@ -2,10 +2,15 @@ alias als="cd ~/dotfiles/aliases"
 alias dc="docker-compose"
 alias dt="cd ~/dotfiles"
 alias ls="ls -G"
+alias last='ls  | tail -n 1'
 alias hosts="sudo vi /private/etc/hosts"
+alias tf="terraform"
 function prompt {
   PROMPT="%F{12}%n@%F{12}%C $1%F{reset}$ "
 }
 function repl() {
   find * -type f | xargs sed -i '' "s/$1/$2/g"
+}
+function fgrep() {
+  find * -type f | xargs grep $1
 }
