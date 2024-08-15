@@ -1,0 +1,5 @@
+DOCKER_ARCH_OPT="--platform linux/x86_64"
+
+function dcbuild {
+  docker build $DOCKER_ARCH_OPT ./ -t `basename $PWD`
+}

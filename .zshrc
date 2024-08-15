@@ -13,6 +13,4 @@ alias ls="ls -G"
 alias dc="docker-compose"
 alias tf="terraform"
 
-function dkb {
-  docker build --platform linux/x86_64 ./ -t `basename $PWD`
-}
+. ~/myenv/docker-aliases

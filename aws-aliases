@@ -1,0 +1,12 @@
+function update_lambda {
+  aws lambda update-function-code --function-name $1 --image-uri ${2}:latest
+}
+
+function ecs_enable_console {
+  aws ecs update-service --region ap-northeast-1 --cluster $1 --service $2 --enable-execute-command
+}
+
+function ecs_console {
+  task_id=`aws ecs list-tasks --cluster $1 --service-name $2 | jq -r '.taskArns[0]'`
+  aws ecs execute-command --region $AWS_REGION --cluster $1 --task $task_id --container $2 --interactive --command "/bin/sh"
+}
